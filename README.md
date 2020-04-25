@@ -1,2 +1,5 @@
 # ai-ds-ml-practical
-Collection of various Course Notes
+
+A collection of various Course Glossary, notes and exercise files for Artificial Intelligence, Data Science and Machine Learning from LinkedIn Learning
+
+1. introduction-to-data-science-2 by Madecraft and Lavanya Vijayan
