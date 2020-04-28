@@ -638,3 +638,76 @@
 
     ----
 * ## **Baby Names usecase**
+    * Load data:
+        * Extract a zip file using ``` zipfile.ZipFile('names_new.zip').extractall('names')```
+            ```
+            # load CSV file as DataFrame, then create a new column "year" with all elements set to 2011
+            pd.read_csv('names/yob2011.txt', names=['name','sex','number']).assign(year=2011)
+
+            # for each year in 1880-2018, load the corresponding CSV file names/yobXXXX.txt
+            # as DataFrame, create new column "year" with all elements set to loop variable,
+            # then concatenate all DataFrames into a single one
+            allyears = pd.concat(pd.read_csv(f'names/yob{year}.txt',
+                                            names=['name','sex','number']).assign(year=year)
+                                for year in range(1880, 2019))
+            ```
+    * Popular baby names:
+        ```
+        allyears = pd.read_csv('allyears.csv.gz')
+        allyears_indexed = allyears.set_index(['sex','name','year']).sort_index()
+        pp.plot(allyears_indexed.loc[('F','Mary')])
+        # normalize F/Mary time series by the total number of births each year
+        pp.plot(allyears_indexed.loc[('F','Mary')] / allyears.groupby('year').sum())
+
+        # "pivot" the third level of the multiindex (years) to create a row of columns;
+        # result is names (rows) x years (columns)
+        allyears_indexed.loc[('F',claires),:].unstack(level=2)
+        # "pivot" the third level of the multiindex (names) to create a row of columns
+        allyears_indexed.loc[('F',claires),:].unstack(level=1)
+
+        # "pivot" the third level of the multiindex (years) to create a row of columns;
+        # result is names (rows) x years (columns)
+        allyears_indexed.loc[('F',claires),:].unstack(level=2)
+
+        # make a stacked (cumulative) area plot using names x years table 
+
+        pp.figure(figsize=(12,2.5))
+        pp.stackplot(range(1880,2019),
+                    allyears_indexed.loc[('F',claires),:].unstack(level=2));
+
+                    # fix stacked plot by filling NaNs with zeros, adding labels, setting axis range
+
+        pp.figure(figsize=(12,2.5))
+        pp.stackplot(range(1880,2019),
+                    allyears_indexed.loc[('F',claires),:].unstack(level=2).fillna(0),
+                    labels=claires);
+
+        pp.legend(loc='upper left')
+        pp.axis(xmin=1880, xmax=2018);
+        ```
+    * Top ten names
+        ```
+        allyears_byyear.loc['F',2018].sort_values('number', ascending=False).head(10).reset_index().name
+
+        # get the top ten names for sex and year
+
+        def getyear(sex, year):
+            return (allyears_byyear.loc[sex, year]             # select M/F, year
+                    .sort_values('number', ascending=False) # sort by most common
+                    .head(10)                               # only ten
+                    .reset_index()                          # lose the index
+                    .name)                                  # return a name-only Series
+
+        # create DataFrame with columns given by top ten name Series for range of years
+        pd.DataFrame({year: getyear('M',year) for year in range(2010,2019)})
+
+        # similar to plotname in 07_03_popularity, but using a query on unindexed data
+        def plotname(sex, name):
+            data = allyears.query('sex == @sex and name == @name')
+            
+            pp.plot(data.year, data.number, label=name)
+            pp.axis(xmin=1880, xmax=2018)
+
+        # get all time favorites: select F, group by name, sum over years, sort, cap 
+        alltime_f = allyears_byyear.loc['F'].groupby('name').sum().sort_values('number', ascending=False).head(10)
+        ```
