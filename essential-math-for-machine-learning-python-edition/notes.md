@@ -87,3 +87,11 @@
     plt.scatter(x, y, color='purple')
 
     plt.show()
+    ```
+* Method to find the value of a function on a given point:
+    * Graph
+    * Tables
+    * Factorization
+    * Substitution
+    * Rationalization
+    * 
