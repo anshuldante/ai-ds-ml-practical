@@ -94,4 +94,20 @@
     * Factorization
     * Substitution
     * Rationalization
-    * 
+## Derivatives and optimization
+
+* Derivative rules:
+    ``` if f(x) = g(x) * h(x)
+        then f`(x) = g`(x) * h(x) + h`(x) * g(x)
+        if f(x) = g(x)/h(x)
+        then f`(x) = (g`(x)h(x) - h`(x)g(x)) / h(x)**2
+        if f(x) = g(h(x))
+        then f`(x) = g`(h(x)) h`(x)
+    ```
+* A function is derivative at a point if it's continuous at that point, the tangent line shouldn't be vertical and it should be smooth at that point i.e. it shouldn't change direction suddenly.
+* Points at which the derivative ios zero or does not exist are called critical points.
+* If the derivative is constant at zero, means the function has a constant value.
+* If it crosses zero from positive to negative, that means a maxima.
+* If it crosses zero from negative to positive, that means a minima.
+* If it only touches zero, that means the function has an inflation points i.e. flattens out and resumes changing in the same direction.
+* If the double derivative is positive: minima, if the double derivative is negative: maxima.
