@@ -111,3 +111,110 @@
 * If it crosses zero from negative to positive, that means a minima.
 * If it only touches zero, that means the function has an inflation points i.e. flattens out and resumes changing in the same direction.
 * If the double derivative is positive: minima, if the double derivative is negative: maxima.
+
+## Vectors and matrices
+* **Vectors**
+    * Magnitude of a vector  = square root of the sum of the squares of all of its coordinates
+    * Angle of a vector = tan inverse of y/x
+    * Rules to calculate theta:
+        * Both x and y are positive: Use the tan-1 value.
+        * x is negative, y is positive: Add 180 to the tan-1 value.
+        * Both x and y are negative: Add 180 to the tan-1 value.
+        * x is positive, y is negative: Add 360 to the tan-1 value.
+    * In vector addition, you just have to add the individual components of the vectors
+    * Multiplication in vectors:
+        * Scalar multiplication: 
+            * Results in another vector.
+            * You just have to multiply the individual components of the vector by the scalar.
+        * Dot product of vectors: 
+            * Results in a scalar value
+            * Just multiply the corresponding values and add.
+        * Cross Product of vectors:
+            * The result is a vector, perpendicular to the 2 original vectors.
+                ```
+                    r = a x b
+                    * r1 = a2*b3 - a3*b2
+                    * r2 = a3*b1 - a1*b3
+                    * r3 = a1*b2 - a2*b1
+                ```
+* **Matrices**
+    * Matrices of the same size can be added/subtracted by just adding the corresponding elements.
+    * Matrices negation just negates the sign of all values
+    * Matrix transposition rotates the matrix while keeping 0,0 the same:
+        ```
+            A = 3 5 1
+                1 4 3
+            AT = 3 1
+                 5 4
+                 1 3
+        ```
+    * Multiplication
+        * Scalar: multiplying by a scalar
+            * Just multiply the elements by the scalar
+        * Dot product: multiplying 2 matrices
+            * The number of columns in the first matrix should be equal to the number of rows in the second matrix.
+            * The result of a(m,n). b(n,p) is a vector with dimensions: r(m,p)
+            * r(0,0) = sum of (a(0, i)*b(i,0))
+    * Identity Matrix
+        * I is the equivalent of the number 1 in matrix terms.
+        * D.I = D
+    * Matrix division
+        * Can't exactly divide matrices, but we can use the fact that division = multiplication by the reciprocal.
+        * So to divide a matrix A by matrix B
+            * Equal to multiplying by B(-1) or B-Inverse.
+            * Find the inverse of B.
+                * For (2,2): 
+                    ``` 
+                    A = a b
+                        c d
+                    determinant = ad-bc
+                    A-1 = 1/det *  d  -b
+                                  -c   a
+                    ```
+                * For (3,3)
+                    * Write an identity matrix next to A and use row level operations to convert A into I
+                    * The current state of the identity matrix becomes the inverse matrix.
+                        ```
+                        A = 3  0  2    1  0  0
+                            2  0 -2 x  0  1  0 
+                            0  1  1    0  0  1
+                        # Add row 2 to row 1
+                        # divide row 1 by 5
+                        # multiple row 1 by 2 and subtract from row 2
+                        # Multiply row 2 by -1/2
+                        # Swap row 2 and row 3
+                        # Subtract row 3 from row 2
+    * Order is VERY IMPORTANT in matrix multiplication:
+        ```
+            A . X = C
+            A-1 . A . X = A-1 . C (X = A-1 . C)
+        ```
+    * Matrix transformations:
+        ``` 
+            T(V) = A . V
+    * Quiver plots:
+        ```
+            %matplotlib inline
+
+            import numpy as np
+            import matplotlib.pyplot as plt
+
+            # We'll use a numpy array for our vector
+            v = np.array([2,1])
+
+            # and we'll use a quiver plot to visualize it.
+            origin = [0], [0]
+            plt.axis('equal')
+            plt.grid()
+            plt.ticklabel_format(style='sci', axis='both', scilimits=(0,0))
+            plt.quiver(*origin, *v, scale=10, color='r')
+            plt.show()
+        ```
+    * Magnitude of a vector:
+        ```
+            import numpy as np
+
+            vMag = np.linalg.norm(v)
+            print (vMag)
+        ```
+    * Cos(theta) = V . S / ||V|| * ||S||
