@@ -171,6 +171,7 @@
         * Plot a bar-chart showing the count of listings by neighborhood in NYC
         * Plot a bar-chart to show the avg price of listings by neighborhood in NYC
     * Histograms and Scatter Plots are commonly used to visualize quantitative (numerical) data.
+        * Continuos and discrete are the two types of quantitative data.
         * Plot the prices of Airbnb listings in a histogram
         * Create a scatter plot for prices and number of reviews for listings.
 

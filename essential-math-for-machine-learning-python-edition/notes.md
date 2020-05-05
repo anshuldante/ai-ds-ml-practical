@@ -218,3 +218,15 @@
             print (vMag)
         ```
     * Cos(theta) = V . S / ||V|| * ||S||
+
+## Statistics and Probability
+
+* Some charts used by statisticians:
+    * Bar charts: quantities by category
+    * Histograms: comparative frequencies of continuous quantitative values
+    * Pie charts: compare relative quantities 
+    * Scatter plots: compare quantitative data values and can be used to find relationships between different fields
+    * Box and whiskers plot to show quartile based percentile distribution.
+* Probability formulas:
+    * ![Probability for dependent/indepedent events](images/dependent_Independent.png)
+    * ![Binomial Probability](images/binomial.png)
