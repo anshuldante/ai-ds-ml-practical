@@ -25,7 +25,7 @@
   * Need linear relationships.
 
 * #### Regression Assumptions
-
+  * Residual is the distance of a data point from its predicted value on the regression line.
   * Residuals have a mean of zero.
   * Normality of errors.
   * Residuals are not auto-correlated.
@@ -150,26 +150,46 @@
       * More importantly, we don't get the total R2 even after adding them all.
 
   * **Part Correlation**
-    * 
+    * ![R2 for IV1 alone](images/r2_iv1_alone.png)
+    * ![R2 for IV1 alone](images/delta_r2_on_adding_iv2_after_iv1.png)
+    * ![R2 for IV1 alone](images/delta_r2_on_adding_iv1_after_iv2.png)
+    * Part correlation is essentially the additional variance explained/total variance.
+    * Also, sum f all delta r2 = total variance
+    * ![R2 for IV1 alone](images/variable_suppression.png)
+    * Suppression is closely related to severe multicollinearity and cause all kinds of issues.
+      * Positive relationships might look like negative relationships.
+      * Things might become unstable in general and can cause all sorts of problems.
 
+* ### Simultaneous regression (Waste)
 
-* ### Simultaneous regression
+  * Ideally, we should've explored the data and the variables to be used before this step.
+  * Adjusted R-square was designed to deter people from having too complicated a model, so as the **number of variables** goes up, the **Adjusted R-Square** goes down.
+  * We always want our **Standardized Coefficients Beta** to be between -1 and 1, if the value for a variable crosses the limits, that indicates **severe multicollinearity.**
+  * Also, even though all of the correlations are positive, some of the beta are negative, this is another indication of severe multicollinearity.
+  * The partial correlation for fabricated metals is very low and so in the significance for it, so we should look to run the model without it.
+  * Ideally we want the residuals to be centered around zero, The residuals plot is not centered around (0,0) but spread across. Hence, normality of errors is not observed or that the error are skewed.
+  * In conclusion we want to look at the following things in case of simultaneous regression:
+    * Coefficients.
+    * R squared.
+    * Residuals plot.
+    * Partial plots.
 
-  * **Setting up the analysis**
+* ### Hierarchical regression (MWBank)
 
-  * **Interpreting the output**
-
-
-* ### Hierarchical regression
-
-  * **Setting up the analysis**
-
-  * **Interpreting the output**
-
+  * We don't want to include any variables that came into existence after the dependant variable. Eg. Current salary.
+  * Either put the variable in a meaningful chronological order or in order of importance.
+  * Even though we've already put in centered education and the titles, the additional 2.3 % because of Sex of Employee is quite significant and this can be used in the court of law.
+  * Again, in the final model, the zero-order coefficients for Sex of Employee say that R-squared is 25% which is significant.
+  * It is evident that 2 of the job categories seem to be non-significant, but whenever there's a group of related variables, either all of them go in or none of them. The less significant ones just mean that they're very close to the base value variables (Clerical in this case).
+  * The histogram is not that bad, just a little skewed to the left, which should be okay.
+  * The residuals plot shows a big clump of numbers at (0,0) but there are some more chunks to the left and some to the right, there is some scattered-ness, but we're okay since the model as a whole seems to be doing well.
+  * We want the errors to be somewhat random and clumped at (0,0).
 
 * ### Stepwise regression
 
-  * **Setting up the analysis**
-
-  * **Interpreting the output**
-
+  * The method's options are:
+    * **Stepwise/forward**: works in forward direction, i.e. selects the most prominent variable first and then the next and so on till there are no more significant ones.
+    * **Removal/backward**: put all of the variables in and discard the ones that are not helpful
+  * We have a small data-set so if we put all variables in then we'll probably have multicollinearity. So we'll use stepwise or forward.
+  * Stepwise regression is not the best option to show which variables are the most useful ones. Simultaneous or hierarchical are more useful for that. The reason is: it has picked some variables for the dataset at hand but for a slightly different dataset, it might pickup another set of variables.
+  * 
