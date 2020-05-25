@@ -25,6 +25,7 @@
   * Need linear relationships.
 
 * #### Regression Assumptions
+
   * Residual is the distance of a data point from its predicted value on the regression line.
   * Residuals have a mean of zero.
   * Normality of errors.
@@ -192,4 +193,53 @@
     * **Removal/backward**: put all of the variables in and discard the ones that are not helpful
   * We have a small data-set so if we put all variables in then we'll probably have multicollinearity. So we'll use stepwise or forward.
   * Stepwise regression is not the best option to show which variables are the most useful ones. Simultaneous or hierarchical are more useful for that. The reason is: it has picked some variables for the dataset at hand but for a slightly different dataset, it might pickup another set of variables.
-  * 
+
+## Spotting Problems and Taking Corrective Action
+
+* ### Collinearity (waste)
+  
+  * **Collinearity Tolerance**: only a small fraction of the IV variance is not explained by the other IVs i.e. the unique contribution of the IV is not large enough. Which could result in multiple variables fighting over the same variance.
+  * **Variance inflation factor**: if we have all 5 IVs, the width of confidence interval of Restaurants and Hotels is 9274. The IVF values for everything other than industrial is ~ 5 - 8.5, which is pretty big.
+  * Variance in general is R-squared, so the square-root of IVF gives tells you how much wider the variance is really is as opposed to what it could be.
+  * From previous experiments we know that the correlation between retail and restaurants is high, also trucking and fabric also have a high correlation, we will now remove the weaker variables from both of the pairs and analyze again.
+  * In general it's said that
+    * Collinearity Tolerance is in the danger zone if > 1.
+    * And VIF is in the red zone if it's > 10.
+  * In our case, the VIF and the tolerance have both dropper by *A LOT*
+  * The confidence intervals are much less wider, the VIF and Tolerance have gone down quite a bit.
+
+  * **Dealing with multicollinearity: Factor analysis/PCA**
+    * We use some factor analysis algorithms and remove any IVs that are correlated.
+    * The result of this diagnostic in the waste case are 2 Factor Scores, which have perfect Tolerance and VIF of 1, but this can't be explained to anyone else.
+  * **Dealing with multicollinearity: Manually combining IVs**
+    * Adding retail and restaurants takes out the collinearity by combining them into a single variable.
+    * At times, it can be a good idea to average out the values of some variables into a new variable.
+
+* ### Outliers
+
+  * **Dealing with outliers and influential points**
+    * Influence: how much the presence of a point is moving the values.
+    * To use Cook's influence values, you try and check if there are some values which are much higher than the major chunk of values, these will have a huge influence on the regression lines.
+    * DFF_1: having the same outlier in the dataset moves the value of males by 213 dollars, which is again much higher than any of the other data points.
+    * DFB1_1: this value illustrates that anyone with 12 years of education will have their salaries moved by ~28 * 12 = ~336, if this case is included.
+    * The larger the dataset, the lower the impact of outliers.
+
+  * **Dealing with outliers: studentized deleted residuals**
+    * The point is to think about qualitative difference of the outliers as compared to the other data points.
+    * We basically create a new variable and give it the same value for all data points and a different value for the outliers. Then we run regression with the new variable. If the new variable is significant, we know that the outlier has a big impact on the model.
+    * Instead of just deleting/removing the outliers, maybe we can discuss with an SME and have another variable which can explain why they are outliers.
+  * **Dealing with outliers: should cases be removed?**
+    * Sometimes you just have to delete some data points.
+    * We run the Cook's and studentized stats on the waste dataset and we find a single case whose industrial is moving the value by 156 , the beta for industrial is -53, so it's almost 3 times the beta coefficient, let's delete this case and try again.
+    * After deleting the outlier data point, the beta values becomes -203, the relationship could've changed to a positive from a negative one.
+    * Whenever we find an outlier, we should know the reason behind it.
+    * If it just doesn't belong to the data population we're working with, we should remove all such cases and not just the outlier.
+
+* ### Detecting curvilinearity
+
+  * If we draw beginning salary vs education level, plotting only for males and we add a quadratic fit line, we can see that the R-square jumped up quite a bit!
+  * Also, R-square can go up for various reasons, we need to check if it jumped up enough to be relevant. As it will also have some negative implications.
+  * A quadratic line also means that we'll have a education and education squared.
+  * Next we plot the two lines together using curve estimation and the r-squared does go up by 20% for quadratic.
+
+## Other Approaches to Regression
