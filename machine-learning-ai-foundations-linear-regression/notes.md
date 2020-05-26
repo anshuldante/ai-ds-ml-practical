@@ -243,3 +243,60 @@
   * Next we plot the two lines together using curve estimation and the r-squared does go up by 20% for quadratic.
 
 ## Other Approaches to Regression
+
+* ### Automatic linear modeling (auto imports)
+
+  * These default settings can be used to get a first level info about the variables, outliers and missing values.
+
+* ### Regression trees (cart, auto imports)
+
+  * Variables like make are not a great option to use in regression trees in our case, since we only have a few cases per make and this might result into our tree over-fitting, so might have to look to remove the variable completely.
+
+* ### Time series forecasting (Australia retail sample)
+
+  * Similar to linear regression but used in time/date based cases.
+  * In the Australia retail sample dataset, we have just 2 variables, date and turnover.
+  * Time-series case use just one variable to predict itself with a time lag using the (previous month's data as input or maybe even the previous year data due to seasonality).
+  * The weird cardiogram like data represents seasonality, which is one of the vary important aspect of such datasets.
+  * Even if you have multiple variables, in general it is better to use time-series forecasting in date/time wise data.
+
+* ### Categorical and ordinal regression (satisfaction)
+
+  * Same as linear regression, used when there are only categorical OR ordinal variables available.
+
+* ### Neural networks
+
+  * Based on previous observations, we know that there's curvilinearity in education level and sex and education level are related variables.
+  * In case of regression, the analyst or the modeler has to create new variables by combining or by adding square of education level as a new variable.
+  * In case of neural networks, we need to tell the tool that sex is categorical but work ex and education level are scale.
+  * Neural nets hide the coefficients, significance and other statistical complexities using the hidden layer and a lot of coefficients.
+
+* ### Binary logistic regression
+
+  * In regression we generate the value of Y.
+  * ![Linear Regression Formula](images/linear_regression_formula.png)
+  * In logistic regression we generate a probability for a particular which lies between 0 and 1. The formula for odds looks as below.
+  * ![Logistic Regression Odds Formula](images/logistic_regression_odds_formula.png)
+  * So when we go ahead and make predictions, the formula looks a little different.
+  * ![Logistic Regression Probability Formula](images/logistic_regression_probability_formula.png)
+  * It's different because we don't build a line here, instead we plot a curve with an asymptote and 0 and 1, like below.
+  * ![Logistic Regression Plot](images/logistic_regression_plot.png)
+  * Logistic regression is very commonly used in epidemiology (study of diseases) and in marketing research. Ex. dark chocolate is good for you, wine is bad for you etc.
+
+* ### Path Analysis and structural equation modeling (SEM)
+
+  * Sort of combines regression and vector analysis.
+  * ![Sample problem](images/sem_sample_problem.png)
+  * If you want to use linear regression for this usecase, you'll go about it something like this:
+    * Establish that A predicts B.
+    * B predicts C.
+    * A predicts C.
+    * A fails to predict C if you control for B.
+  * Essentially you'd build 4 models, and even then it'd be very hard to explain this to anyone.
+  * With SEM, you can achieve it all pretty easily at the same time.
+  * ![SEM sample model](images/sem_sample_model.png)
+
+* ### Others
+
+  * OLS (ordinary least squares) assumptions not met.
+  * Nonlinear regression and curve estimation
