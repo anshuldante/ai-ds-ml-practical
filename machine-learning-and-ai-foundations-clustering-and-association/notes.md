@@ -30,7 +30,7 @@
 
 ## K-Means
 
-* ### How does it work?
+* ### How does it work
 
   * K-Means builds upon hierarchical and does it efficiently.
   * Hierarchical we measure distance of every point from every other point and have to iterate through as many times as we have cases i.e. n^3 times.
