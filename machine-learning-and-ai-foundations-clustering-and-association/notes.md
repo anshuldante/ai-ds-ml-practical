@@ -178,3 +178,80 @@
   * The cluster viewer is not a good choice for viewing a self organizing map, you'll have to honor its map property and view it as one.
   * The farther the members are in the map, the less similar they are, the closer the are, the more similar they are. This can be used for anomaly detection.
   * The algorithm basically starts with the input and a number of neurones, all of the neurones are connected to each other, it runs the inputs one by one, and moves the closest neurone a little closer to the input, but since the neurones are connected, all of the other neurones also move a little. This process is repeated for all inputs and finally, all of the inputs are grouped with their corresponding neurones.
+
+## Anomaly Detection
+
+* ### The k = 1 trick
+
+  * In a supervised learning algorithm, you can use historically known fraudulent transactions and make that a target variable.
+  * One of the algorithms is to use k-means with k = 1, we put all of the input variables in and let it run.
+  * It's not a good idea to do this in case of modeling but for fraud detection, it might be okay.
+  * The anomalies will be very far away form the centre when you make a single big cluster for all of the records.
+
+* ### Anomaly Detection Algorithms
+
+  * BIRCH's algorithm suggests the number of clusters, we'll create those clusters and calculate the distance of every point from the centroid the the cluster they belong to.
+  * You'd run the anomaly detection version of it and look for the boolean variable which says whether or not a particular data point is an anomaly or not.
+
+* ### Using SOM for anomaly detection
+
+  * In general going for supervised learning to detect anomalies is a good idea, but supervised learning requires known cases/examples, but with unsupervised, you might be able to detect new fraud methods in the making.
+  * There are some smaller cluster, which are small in size, these point to some anomaly in the transaction in those clusters.
+  * Essentially you can summarize with the following points:
+    * Business rules suggested by SMEs.
+    * Supervised learning methods using known outcomes
+    * Unsupervised learning to find new and unusual patterns.
+
+## Association Rules and Sequence Detection
+
+* ### Introduction
+
+  * You just need the customerId and the SKU or maybe the transactioId and the SKU, the level of granularity changes in the 2 cases.
+  * Sequence analysis includes dates, since we're sometimes interested in data like: the customer bought item x and a few days item y. In general it's not applied to retail data analysis but used in web mining and predicting maintenance.
+  * You might even sometimes look into data like following:
+  * ![Sample data conversion to reach genre wise expenses instead of SKU wise expenses](images/sample_data_transformation.png)
+
+* ### Running Association Rules
+
+  * The id that's used for the analysis depends upon the usecase, if you can track the customerId throughout the data, you can go with the customerId but if you're looking at cash customers data, you have no way to link different transactions form them. so you go with basketId.
+  * Again in the content we have 2 choices, productCode and productId, productId is the more granular one here.
+  * It's always better to run all 4 combinations.
+
+* ### Terminology
+
+| Term               | Description                                                                                                 |
+| ------------------ | ----------------------------------------------------------------------------------------------------------- |
+| Antecedents        | One of more **"If"** choices                                                                                |
+| Consequents        | One or more **"Then"** subsequent choices                                                                   |
+| Confidence         | % of time the **"If""** choices result in the **"Then"** choices (accuracy of the rule)                     |
+| Rule support       | % of all transactions that have both **"If"** and **"Then"** choices                                        |
+| Antecedent support | % of all transactions that have the **"If"** choice                                                         |
+| Lift               | How many times more likely a customer is to choose the **"If"** with the **"Then"** just the **"If"** alone |
+
+* ### Interpreting association rules
+
+  * The rules with 100% confidence may not always be all that great, since they might reveal stuff like, the game console that comes with battery, or requires batteries etc.
+  * You also don't want to be on the opposite end where the rule confidence is too low or the rule support is too low.
+
+* ### Putting association rules to use
+
+  * The generated rules are not of much use to the marketing team or anyone else unless you clean them up and pull product level and group level info.
+  * ![Sample association rules](images/sample_association_rules.png)
+  * The blue highlighted group is the **Console Gamers** and they tend to buy cheaper TVs.
+  * The group highlighted in yellow are PC games, and they buy TVs from a variety of price range.
+  * Although the SKUs in both of the groups are different, we still can club the members of these groups and have a single marketing campaign, but in the mails we send to them, we mentioned the SKUs specific to them.
+
+* ### Comparing clusters and association rules
+
+  * Clustering and association rules are somewhat 2 sides of the same coin.
+  * In contrast, there are only 4 clusters and we have thousands of rules, so they are much more granular and cover much lesser of the population.
+  * Nonetheless, custer-1 are the biggest TV buyers, they also spend some money on video games, much lesser on the other categories. If you take a closer look, this group is willing to shell out big sums and has shown brand loyalty (we kicked out one times shoppers).
+  * If we now switch to rules which had entertainment as the antecedent, and Video Games/Game Consoles, we can send them some promotions and have them shell out bigger sum on the consoles or video games category.
+
+* ### Sequence Analysis
+
+  * We'll use customerId, TransactionDate and Product Category as the variables to be analyzed.
+  * ![Sample sequence rules](images/sample_sequence_rules.png)
+  * The first rule which reads "People that bought 5 video games, will buy a 6th one", this is just spam, but rules like these pop-up in sequence rule analysis all the time and they'll be kicked out.
+  * Also, the sequencing in the rules may not always be required, for example, whether Pizza then beer or Beer then pizza, may not be critical, just the association may ne enough.\
+  * The sequencing is important in cases of **Web Mining and Predictive Maintenance**. An engineer needs to know the sequence of events that led to the failure of a machine.
