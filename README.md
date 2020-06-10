@@ -10,3 +10,6 @@ A collection of various Course Glossary, notes and exercise files for Artificial
 6. Machine Learning and AI Foundations: Decision Trees by Keith McCormick
 7. Machine Learning & AI: Advanced Decision Trees by Keith McCormick
 8. applied-machine-learning-foundations by Derek Jedamaski
+9. machine-learning-and-ai-foundations-value-estimations by Adam Geitgey
+10. machine-learning-and-ai-foundations-recommendations by Adam Geitgey
+11. applied-machine-learning-algorithms by  Derek Jedamaski
