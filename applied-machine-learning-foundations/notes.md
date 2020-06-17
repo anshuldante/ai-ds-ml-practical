@@ -206,3 +206,33 @@
 ## End-to-end pipeline
 
 * ![End-to-end pipeline flow/process](images/pipeline_process_flow.png).
+* We can use GridSearchCV (sklearn.model_selection) to find the optimal hyper-parameters. The package is just a wrapper over cross_val_score.
+* The zip() method can be used to combines values returned by multiple iterators by index into tuples.
+
+```python
+a = ("John", "Charles", "Mike")
+b = ("Jenny", "Christy", "Monica", "Vicky")
+
+x = zip(a, b)
+for c, d in x:
+    print(f'a: {c}, b: {d}')
+// Output
+a: John, b: Jenny
+a: Charles, b: Christy
+a: Mike, b: Monica
+```
+
+* On using GridSearchCV, we found that the improvement over the default values of (max_depth = 10 and n_estimators=100) is not very significant.
+* Our top 3 models turn out to be: (max_depth, n_estimators) = (10, 100), (20, 50) and (10, 50)
+* I ran 6 combinations of hyper-params and the retuls were:
+
+```python
+MAX DEPTH: 100 / # OF EST: 10 -- A: 0.821 / P: 0.833 / R: 0.724
+MAX DEPTH: 50 / # OF EST: 20 -- A: 0.832 / P: 0.829 / R: 0.763
+MAX DEPTH: 50 / # OF EST: 10 -- A: 0.799 / P: 0.778 / R: 0.737
+MAX DEPTH: 5 / # OF EST: 10 -- A: 0.821 / P: 0.879 / R: 0.671
+MAX DEPTH: 100 / # OF EST: 10 -- A: 0.804 / P: 0.789 / R: 0.737
+MAX DEPTH: 10 / # OF EST: 5 -- A: 0.844 / P: 0.864 / R: 0.75
+```
+
+* The forest with MAX DEPTH: 5 / # OF EST: 10 turned out to work the best for our sample sets.
