@@ -1,4 +1,4 @@
-from sklearn.externals import joblib
+import joblib
 
 # Load the model we trained previously
 model = joblib.load('trained_house_classifier_model.pkl')
@@ -7,14 +7,14 @@ model = joblib.load('trained_house_classifier_model.pkl')
 # arrangement as our training data set.
 house_to_value = [
     # House features
-    2006,   # year_built
+    1973,   # year_built
     1,      # stories
     4,      # num_bedrooms
     3,      # full_bathrooms
     0,      # half_bathrooms 
     2200,   # livable_sqft
     2350,   # total_sqft
-    0,      # garage_sqft
+    400,      # garage_sqft
     0,      # carport_sqft
     True,   # has_fireplace
     False,  # has_pool
@@ -22,13 +22,13 @@ house_to_value = [
     True,   # has_central_cooling
     
     # Garage type: Choose only one
-    0,      # attached
+    1,      # attached
     0,      # detached
-    1,      # none
+    0,      # none
     
     # City: Choose only one
-    0,      # Amystad
-    1,      # Brownport
+    1,      # Amystad
+    0,      # Brownport
     0,      # Chadstad
     0,      # Clarkberg
     0,      # Coletown

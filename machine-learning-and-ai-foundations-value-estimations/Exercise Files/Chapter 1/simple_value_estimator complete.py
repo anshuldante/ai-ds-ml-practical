@@ -16,7 +16,5 @@ def estimate_home_value(size_in_sqft, number_of_bedrooms):
 # - 3800 sq ft
 # Actual value: $450,000
 
-value = estimate_home_value(3800, 5)
 
-print("Estimated valued:")
-print(value)
+print(f"Estimated valued: {estimate_home_value(3800, 5)}")

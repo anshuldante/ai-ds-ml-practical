@@ -17,8 +17,8 @@ del df['zip_code']
 features_df = pandas.get_dummies(df, columns=['garage_type', 'city'])
 del features_df['sale_price']
 
-X = features_df.as_matrix()
-y = df['sale_price'].as_matrix()
+X = features_df.to_numpy()
+y = df['sale_price'].to_numpy()
 
 # Split the data set in a training set (70%) and a test set (30%)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
@@ -36,7 +36,7 @@ param_grid = {
     'loss': ['ls', 'lad', 'huber']
 }
 
-# Define the grid search we want to run. Run it with four cpus in parallel.
+# Define the grid search we want to run. Run it with four CPUs in parallel.
 gs_cv = GridSearchCV(model, param_grid, n_jobs=4)
 
 # Run the grid search - on only the training data!
