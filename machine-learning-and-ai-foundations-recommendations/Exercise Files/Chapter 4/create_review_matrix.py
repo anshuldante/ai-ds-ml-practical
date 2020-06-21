@@ -7,7 +7,7 @@ import webbrowser
 df = pd.read_csv("movie_ratings_data_set.csv")
 
 # Convert the running list of user ratings into a matrix using the 'pivot table' function
-ratings_df =
+ratings_df = pd.pivot_table(df, index='user_id', columns='movie_id', aggfunc=np.max)
 
 # Create a web page view of the data for easy viewing
 html = ratings_df.to_html(na_rep="")

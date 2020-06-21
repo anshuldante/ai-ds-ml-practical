@@ -10,7 +10,7 @@ raw_dataset_df = pd.read_csv('movie_ratings_data_set.csv')
 ratings_df = pd.pivot_table(raw_dataset_df, index='user_id', columns='movie_id', aggfunc=np.max)
 
 # Apply matrix factorization to find the latent features
-U, M = matrix_factorization_utilities.low_rank_matrix_factorization(ratings_df.as_matrix(),
+U, M = matrix_factorization_utilities.low_rank_matrix_factorization(ratings_df.to_numpy(),
                                                                     num_features=15,
                                                                     regularization_amount=0.1)
 
@@ -20,4 +20,4 @@ predicted_ratings = np.matmul(U, M)
 # Save features and predicted ratings to files for later use
 pickle.dump(U, open("user_features.dat", "wb"))
 pickle.dump(M, open("product_features.dat", "wb"))
-pickle.dump(predicted_ratings, open("predicted_ratings.dat", "wb" ))
+pickle.dump(predicted_ratings, open("predicted_ratings.dat", "wb"))
