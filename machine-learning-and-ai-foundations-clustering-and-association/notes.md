@@ -137,7 +137,7 @@
 * ### Running a multiple correspondence analysis
 
   * You should do cross-tabulation, pearson-chi-score or something similar before this step to find out the categorical variables which are most related to the cluster membership variable.
-  * This algo works best when you have labeled data with numeric code instead of strings, so you'll have to transform your categorical variables into numeric codes.
+  * This algorithm works best when you have labeled data with numeric code instead of strings, so you'll have to transform your categorical variables into numeric codes.
   * We also want to use the number of children variable, since the distribution is highly skewed (3 people with 5 kids and 12 with 4 against a total of 2700 cases), the algorithm will struggle to convert this.
   * So we recode them into a new variable with 0 -> 1; 1,2 -> 2; 3+ -> 3.
   * Now we start with **dimension reduction->optional scaling** algorithm on the variables: KMeans, photo_num, goldstar_num, gender_num, homeowner_num and Numchild_bin using all of them as analysis variables and building joint category plots for all of them together.
