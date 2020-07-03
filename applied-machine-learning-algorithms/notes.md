@@ -168,7 +168,7 @@
         * Long and skinny.
       * How does it handle the complexity of feature relationships?
       * How does it handle messy data?
-    * Latency: 
+    * Latency:
       * How long will the model take to train?
         * Logistic is fast to train, but XgBoost and SVM are slow.
       * How long will it take to predict.
