@@ -97,3 +97,6 @@
 
 * ImageNet
 * <http://playground.tensorflow.org/>
+* <https://colab.research.google.com/>
+* FMNIST
+* MNIST

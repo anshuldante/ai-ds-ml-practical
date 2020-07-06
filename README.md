@@ -14,5 +14,4 @@ A collection of various Course Glossary, notes and exercise files for Artificial
 10. machine-learning-and-ai-foundations-recommendations by Adam Geitgey
 11. applied-machine-learning-algorithms by  Derek Jedamaski
 12. neural-networks-and-convolutional-neural-networks-essential-training by Jonathan Fernandes
-13. pytorch-essential-training-deep-learning by Jonathan Fernandes
-14. building-and-deploying-deep-learning-applications-with-tensorflow by Adam Geitgey
+13. nlp-with-python-for-machine-learning-essential-training by Derek Jedamaski
