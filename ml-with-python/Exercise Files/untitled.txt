@@ -1,0 +1,27 @@
+Python vs Anaconda
+
+Python + lot of ML & DS & AI libs + beautiful tools
+
+
+The Basics:
+    Conditionals (if-elif-else)
+    Loops  -( for, while )
+    Lists,Strings,Tuples,Dictionaries,Sets
+    Functions
+    Modules
+
+
+Intermediate:
+    Enumerate
+    Sorting
+    List Comprehensions,
+    Generators & Iterators,
+    Exceptions,
+    Map, Reduce, Filter
+    zip & Argument Unpacking
+    
+[4, 5, 3, 2, 1]
+[9, 3, 2, 1]
+[12,2, 1]
+[14,1]
+[15]
