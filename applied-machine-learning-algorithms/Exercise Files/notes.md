@@ -1,1 +1,0 @@
-# Equations, Graphs and functions

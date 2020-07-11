@@ -177,7 +177,7 @@
   * It's a flavour of neural networks that create a map as the out put and can take any type of variables.
   * The cluster viewer is not a good choice for viewing a self organizing map, you'll have to honor its map property and view it as one.
   * The farther the members are in the map, the less similar they are, the closer the are, the more similar they are. This can be used for anomaly detection.
-  * The algorithm basically starts with the input and a number of neurones, all of the neurones are connected to each other, it runs the inputs one by one, and moves the closest neurone a little closer to the input, but since the neurones are connected, all of the other neurones also move a little. This process is repeated for all inputs and finally, all of the inputs are grouped with their corresponding neurones.
+  * The algorithm basically starts with the input and a number of neurons, all of the neurons are connected to each other, it runs the inputs one by one, and moves the closest neuron a little closer to the input, but since the neurons are connected, all of the other neurons also move a little. This process is repeated for all inputs and finally, all of the inputs are grouped with their corresponding neurons.
 
 ## Anomaly Detection
 
