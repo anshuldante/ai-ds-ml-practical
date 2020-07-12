@@ -15,3 +15,15 @@ A collection of various Course Glossary, notes and exercise files for Artificial
 11. applied-machine-learning-algorithms by  Derek Jedamaski
 12. neural-networks-and-convolutional-neural-networks-essential-training by Jonathan Fernandes
 13. nlp-with-python-for-machine-learning-essential-training by Derek Jedamaski
+
+## TODO
+
+* Linear discriminant analysis
+* Principal Component Analysis
+* Adaboost
+* XGBoost
+* Light GBS
+* Cat Boost
+* Bagging
+* Confusion matrix
+* Build the samples from **advanced-predictive-modeling-mastering-ensembles-and-metamodeling**
