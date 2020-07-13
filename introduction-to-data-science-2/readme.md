@@ -119,7 +119,7 @@
     * Price
     * Distance
     * Blood Pressure
-* The **type of data** you have determines **what you can do** with it
+* The **type of data** you have, determines **what you can do** with it
   * Consider a table like this: education -> 1=Junior-High, 2=High-school, 3=UG, 4=PG, 5=Ph.D.
 
 | ID  | Job Title | Salary    | Education |
@@ -151,7 +151,7 @@
   * Missing values
   * Formatting of values
   * Structure of the overall data
-  * Extracting info form complex values
+  * Extracting info from complex values
   * Unit Conversion
   * Interpretation of magnitudes
 * Some examples can be:
