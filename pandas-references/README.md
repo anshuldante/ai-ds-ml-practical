@@ -1,0 +1,94 @@
+# Pandas Reference
+
+| Method                                               | Description                                                             |
+| ---------------------------------------------------- | ----------------------------------------------------------------------- |
+| pd.read_csv                                          | Read a CSV file                                                         |
+| df.info()                                            | Column names, Non-null count and data-types                             |
+| df.columns                                           | Column names                                                            |
+| df.dtypes                                            | Columns datatypes                                                       |
+| df['col'] *OR* df.col                                | column name, length, datatype and some data                             |
+| df['col'].unique()                                   | unique values in the column                                             |
+| df['col'].value_counts()                             | counts by unique values                                                 |
+| df[df['col'] == 'val'] *OR* df.query('col' == 'val') | rows filtered by column = value                                         |
+| df[df.col.str.contains('val')]                       | rows with col having the str 'val'                                      |
+| df = pd.DataFrame(np.load('x.npy'))                  | data frame from npy file or from a numpy array                          |
+| df.set_index('col)                                   | use selected columns as index instead of the default row numbers        |
+| df.loc['val], df.loc[[1,2,3]], df.loc[1:50, 'col']   | rows based on a single, list or slice or labels for rows and/or columns |
+| df.sort_index()                                      | sort the index in default ascending order                               |
+| df.index.nlevels                                     | number of levels in the index                                           |
+| df.index.get_level_values(1)                         | all values in the passed level number                                   |
+| df.groupby('col')['col2].mean()                      | Group by and aggregate                                                  |
+| gapminder.pivot_table('babies', 'year', 'region')    | segment babies data by both year and region, then take mean             |
+
+```python
+# Different ways to create dataframes from raw data.
+pd.DataFrame([{'title': 'David Bowie', 'year': 1969},
+              {'title': 'The Man Who Sold the World', 'year': 1970},
+              {'title': 'Hunky Dory', 'year': 1971}])
+pd.DataFrame([('Ziggy Stardust', 1), ('Aladdin Sane', 1), ('Pin Ups', 1)], columns=['title','toprank'])
+pd.DataFrame({'title': ['David Bowie', 'The Man Who Sold the World', 'Hunky Dory',
+                        'Ziggy Stardust', 'Aladdin Sane', 'Pin Ups', 'Diamond Dogs',
+                        'Young Americans', 'Station To Station', 'Low', 'Heroes', 'Lodger'],
+              'release': ['1969-11-14', '1970-11-04', '1971-12-17', '1972-06-16',
+                          '1973-04-13', '1973-10-19', '1974-05-24', '1975-03-07',
+                          '1976-01-23', '1977-01-14', '1977-10-14', '1979-05-18']})
+```
+
+```python
+# Different ways to select rows and columns in case of multi-index
+nobels_multi.loc[(slice(1901,1910), 'Chemistry'),:]
+nobels_multi.loc[(range(2000), slice(None)), :]
+nobels_multi.loc[(slice(None), 'Chemistry'),:]
+```
+
+```python
+# fancy index with multiple conditions
+nobels[(nobels.year >= 1901) & (nobels.year <= 1910) & (nobels.discipline == 'Chemistry')]
+nobels.query('year >= 1901 and year <= 1910 and discipline == "Chemistry"')
+```
+
+```python
+# Create a scatter plot with multiple subplots
+axes = gapminder[gapminder['country'] == 'China'].sort_values('year').plot('year', 'life_expectancy', label='China')
+gapminder[gapminder['country'] == 'Italy'].sort_values('year').plot('year', 'life_expectancy', label='Italy', ax=axes)
+gapminder[gapminder['country'] == 'United States'].sort_values('year').plot('year', 'life_expectancy', label='USA', ax=axes)
+gapminder[gapminder['country'] == 'India'].sort_values('year').plot('year', 'life_expectancy', label='India', ax=axes)
+pp.ylabel('life expectancy')
+```
+
+```python
+# "pivot" the third level of the multiindex (years) to create a row of columns;
+# result is names (rows) x years (columns)
+allyears_indexed.loc[('F',claires),:].unstack(level=2)
+
+# fix stacked plot by filling NaNs with zeros, adding labels, setting axis range
+pp.figure(figsize=(12,2.5))
+pp.stackplot(range(1880,2019),
+             allyears_indexed.loc[('F',claires),:].unstack(level=2).fillna(0),
+             labels=claires);
+
+pp.legend(loc='upper left')
+pp.axis(xmin=1880, xmax=2018);
+```
+
+```python
+# get the top ten names for sex and year
+
+def getyear(sex, year):
+    return (allyears_byyear.loc[sex, year]             # select M/F, year
+               .sort_values('number', ascending=False) # sort by most common
+               .head(10)                               # only ten
+               .reset_index()                          # lose the index
+               .name)                                  # return a name-only Series
+```
+
+```python
+# get all time favorites: select F, group by name, sum over years, sort, cap 
+alltime_f = allyears_byyear.loc['F'].groupby('name').sum().sort_values('number', ascending=False).head(10)
+```
+
+```python
+# compute ratio of male and female totals (Pandas aligns axes automatically);
+# drop NaNs that occur where only one Series has a value
+ratios = (totals.loc['M'] / totals.loc['F']).dropna()
+```
