@@ -37,7 +37,7 @@
 * #### Regression Challenges
 
   * Visual examination becomes more difficult.
-  * Multicollinearity, when you have a single variables this is not a problem but in multi-regression it is!
+  * Multicollinearity, when you have a single variable this is not a problem but in multi-regression it is!
   * Interactions.
   * Attribute importance to each variable.
   * Juggling multiple problems all at once.
@@ -59,8 +59,8 @@
 
 * ### Checking Assumptions: Durbin Watson
 
-  * If the Durbin-Watson value is fairly close to 2, the relationship is a healthy.
-  * In general the value lies between 1.5 and 2.5
+  * If the Durbin-Watson value is fairly close to 2, the relationship is a healthy one.
+  * In general, the value lies between 1.5 and 2.5
 
 * ### Checking Assumptions: Levine's test
 
@@ -165,7 +165,7 @@
 
   * Ideally, we should've explored the data and the variables to be used before this step.
   * Adjusted R-square was designed to deter people from having too complicated a model, so as the **number of variables** goes up, the **Adjusted R-Square** goes down.
-  * We always want our **Standardized Coefficients Beta** to be between -1 and 1, if the value for a variable crosses the limits, that indicates **severe multicollinearity.**
+  * We always want our **Standardized Beta Coefficients** to be between -1 and 1, if the value for a variable crosses the limits, that indicates **severe multicollinearity.**
   * Also, even though all of the correlations are positive, some of the beta are negative, this is another indication of severe multicollinearity.
   * The partial correlation for fabricated metals is very low and so in the significance for it, so we should look to run the model without it.
   * Ideally we want the residuals to be centered around zero, The residuals plot is not centered around (0,0) but spread across. Hence, normality of errors is not observed or that the error are skewed.
@@ -199,8 +199,8 @@
 * ### Collinearity (waste)
   
   * **Collinearity Tolerance**: only a small fraction of the IV variance is not explained by the other IVs i.e. the unique contribution of the IV is not large enough. Which could result in multiple variables fighting over the same variance.
-  * **Variance inflation factor**: if we have all 5 IVs, the width of confidence interval of Restaurants and Hotels is 9274. The IVF values for everything other than industrial is ~ 5 - 8.5, which is pretty big.
-  * Variance in general is R-squared, so the square-root of IVF gives tells you how much wider the variance is really is as opposed to what it could be.
+  * **Variance inflation factor**: if we have all 5 IVs, the width of confidence interval of Restaurants and Hotels is 9274. The VIF values for everything other than industrial is ~ 5 - 8.5, which is pretty big.
+  * Variance in general is R-squared, so the square-root of VIF gives tells you how much wider the variance is really is as opposed to what it could be.
   * From previous experiments we know that the correlation between retail and restaurants is high, also trucking and fabric also have a high correlation, we will now remove the weaker variables from both of the pairs and analyze again.
   * In general it's said that
     * Collinearity Tolerance is in the danger zone if > 1.

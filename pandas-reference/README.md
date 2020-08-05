@@ -29,7 +29,8 @@
 | df.horsepower=df.horsepower.fillna(df.horsepower.mean()) | fill nans with the mean                                                 |
 | pd.get_dummies(iris["species"])                          | get dummy variables with values for the specified column                |
 | df.corr()                                                | Correlation matrix for all columns                                      |
-
+| df.drop(['B', 'C'], axis=1)                              | drop a column                                                           |
+| df.drop([0, 1])                                          | drop by index                                                           |
 
 ```python
 # Different ways to create dataframes from raw data.
