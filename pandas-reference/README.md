@@ -31,6 +31,7 @@
 | df.corr()                                                | Correlation matrix for all columns                                      |
 | df.drop(['B', 'C'], axis=1)                              | drop a column                                                           |
 | df.drop([0, 1])                                          | drop by index                                                           |
+| pd.concat([cars, dummies], axis=1)                       | concatenate 2 or more dataframes                                        |
 
 ```python
 # Different ways to create dataframes from raw data.
