@@ -8,3 +8,6 @@
 | sns.lmplot(x="petal_length", y="petal_width", data=iris, hue='species')            | plot x vs y and add a regression line with conditionals                                                     |
 | sns.residplot(iris['petal_length'], y, lowess=True, color="g")                     | Residual plot (between input and predicted variable)                                                        |
 | sns.scatterplot(x=iris['petal_length'], y=iris['petal_width'],hue=iris['species']) | scatterplot between x and y colored by z, in pyplot, the variable values have to be mapped to numbers first |
+| sns.distplot(cars['price_usd'])                                                    | Density distribution plot                                                                                   |
+| g = sns.PairGrid(df) g.map(plt.scatter);                                           | Same as pair plot but with more options                                                                     |
+| g = sns.FacetGrid(df, col="fbs", margin_titles=True) g.map(sns.distplot, "age");   | grid of plots based on the values of col                                                                    |

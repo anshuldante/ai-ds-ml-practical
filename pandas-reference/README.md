@@ -32,6 +32,7 @@
 | df.drop(['B', 'C'], axis=1)                              | drop a column                                                           |
 | df.drop([0, 1])                                          | drop by index                                                           |
 | pd.concat([cars, dummies], axis=1)                       | concatenate 2 or more dataframes                                        |
+| pd.sort_values('col',ascending=False)                    | sort dataframe by column                                                |
 
 ```python
 # Different ways to create dataframes from raw data.
