@@ -11,3 +11,4 @@
 | sns.distplot(cars['price_usd'])                                                    | Density distribution plot                                                                                   |
 | g = sns.PairGrid(df) g.map(plt.scatter);                                           | Same as pair plot but with more options                                                                     |
 | g = sns.FacetGrid(df, col="fbs", margin_titles=True) g.map(sns.distplot, "age");   | grid of plots based on the values of col                                                                    |
+| sns.countplot(x="target", data=df, palette="bwr")                                  | counts by value plot                                                                                        |
