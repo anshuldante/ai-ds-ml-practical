@@ -21,6 +21,7 @@
 | DecisionTreeClassifier                                                                   | Decision Tree Classifier                                   |
 | tree_clf.score(X_test, y_test)                                                           | Score for a classifier                                     |
 | sklearn.neural_network.MLPClassifier                                                     | Multi Level Perceptron (neural net)                        |
+| sklearn.neighbors.KNeighborsClassifier                                                   | K-nearest neighbors classifier (supervised)                |
 
 
 ```python
