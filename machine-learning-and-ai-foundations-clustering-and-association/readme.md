@@ -34,13 +34,13 @@
 
   * K-Means builds upon hierarchical and does it efficiently.
   * Hierarchical we measure distance of every point from every other point and have to iterate through as many times as we have cases i.e. n^3 times.
-  * We have to tell the value of K to K-Means, it finds 3 well spaced points and makes 3 groups and finds the centroids of those clusters and refine the solutions a little.
+  * We have to tell the value of K to K-Means, it finds 3 well spaced points and makes 3 groups and finds the centroids of those clusters and refines the solution a little.
   * So although it doesn't make just one pass at the data, but it only makes a handful passes.
 
 * ### Which variables should be used with K-Means
 
   * You generally want to work with scale variables which measure similar things, have the same scale and unit and then you want to standardize them.
-  * There are techniques to combine categorize to combine the two types: for ex. you can build a clustering solution for the scale variables and then apply the categorical variables to build the final model.
+  * There are techniques to combine the two variable types: for ex. you can build a clustering solution for the scale variables and then apply the categorical variables to build the final model.
 
 * ## Interpreting a box and whiskers plot
 
@@ -68,7 +68,7 @@
 * ### Which cases should be used with k-means
 
   * Don't be afraid to remove cases which don't provide any new info.
-  * For ex. in a gold study, the company knew that old golfers play a lot, so we can look to remove them from the analysis, since the analysis won't give us anything new about them.
+  * For ex. in a golf study, the company knew that old golfers play a lot, so we can look to remove them from the analysis, since the analysis won't give us anything new about them.
   * Clustering is an exploratory technique, if you don't get results, make adjustments and try again.
   * Another reason for the one-time shoppers could be the cash-customers, so you'd want to discuss this with the SME before going ahead.
 
@@ -95,7 +95,7 @@
     * THe last 2 clusters which were a medium sized cluster in k=4 have been broken down and one of them is ~5%, so we need to make a decision on the inclusion of the cluster and if increasing k even makes sense.
 
   * **Best solution?**
-    * There are no straight=forward answers for: what's the best cluster?
+    * There are no straight forward answers for: what's the best cluster?
     * We build clusters using auto-clustering for k =3 to 8 and the best one SPSS says is k=3.
 
 ## Visualizing and Reporting Cluster Solutions
@@ -155,7 +155,7 @@
   * CLuster analysis and decision trees are a powerful combination.
   * There rarely is a need for categories in the cluster analysis.
   * Concentrate first on the cluster analysis using variables that are somewhat related and which make sense.
-  * The cluster data is usually the data that is harder to get. For ex. it's much easier to get zipcode data for customers than it is to get the spending patterns for them, you need to go through logs, transaction, purchases etc. and colalte them to reach it.
+  * The cluster data is usually the data that is harder to get. For ex. it's much easier to get zip-code data for customers than it is to get the spending patterns for them, you need to go through logs, transaction, purchases etc. and collate them to reach it.
   * Then bring in categorical data-which is usually easy to get.
   * Phase Two is very important in case of cluster analysis
     * Make the cluster solution the target of a supervised learning model.
@@ -206,7 +206,7 @@
 
 * ### Introduction
 
-  * You just need the customerId and the SKU or maybe the transactioId and the SKU, the level of granularity changes in the 2 cases.
+  * You just need the customerId and the SKU or maybe the transactionId and the SKU, the level of granularity changes in the 2 cases.
   * Sequence analysis includes dates, since we're sometimes interested in data like: the customer bought item x and a few days item y. In general it's not applied to retail data analysis but used in web mining and predicting maintenance.
   * You might even sometimes look into data like following:
   * ![Sample data conversion to reach genre wise expenses instead of SKU wise expenses](images/sample_data_transformation.png)
@@ -253,5 +253,5 @@
   * We'll use customerId, TransactionDate and Product Category as the variables to be analyzed.
   * ![Sample sequence rules](images/sample_sequence_rules.png)
   * The first rule which reads "People that bought 5 video games, will buy a 6th one", this is just spam, but rules like these pop-up in sequence rule analysis all the time and they'll be kicked out.
-  * Also, the sequencing in the rules may not always be required, for example, whether Pizza then beer or Beer then pizza, may not be critical, just the association may ne enough.\
+  * Also, the sequencing in the rules may not always be required, for example, whether Pizza then beer or Beer then pizza, may not be critical, just the association may ne enough.
   * The sequencing is important in cases of **Web Mining and Predictive Maintenance**. An engineer needs to know the sequence of events that led to the failure of a machine.
