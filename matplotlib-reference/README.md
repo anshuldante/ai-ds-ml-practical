@@ -1,20 +1,21 @@
 # Matplotlib References
 
-| Method                                                      | Description                                    |
-| ----------------------------------------------------------- | ---------------------------------------------- |
-| plt.plot(df.x, df.y, color="grey")                          | define basic plot params                       |
-| plt.xlabel('x')                                             | label for x-axis                               |
-| plt.ylabel('y')                                             | label for y-axis                               |
-| plt.grid()                                                  | display a grid in the plot                     |
-| plt.axhline(y, xmin, xmax)                                  | add horizontal line                            |
-| plt.axvline(x, ymin, ymax)                                  | add vertical line                              |
-| plt.show()                                                  | display all plots                              |
-| plt.annotate('text',(1.333, 0))                             | annotate the point x,y in the plot             |
-| plt.xticks(range(0,11, 1))/plt.yticks(range(0, 22, 1))      | add labels on the x/y axis.                    |
-| plt.quiver(x, y, xg, yg, width = l, units = 'dots')         | A quiver plot                                  |
-| plt.fill_between(section,f(section), color='orange')        | fill the selected area with the selected color |
-| df_counts.father.plot.hist(title='Father Heights', bins=30) | histogram with 30 bins                         |
-| df['col'].corr(df['col2'])                                  | correlation between col and col2               |
+| Method                                                 | Description                                    |
+| ------------------------------------------------------ | ---------------------------------------------- |
+| plt.plot(df.x, df.y, color="grey")                     | define basic plot params                       |
+| plt.xlabel('x')                                        | label for x-axis                               |
+| plt.ylabel('y')                                        | label for y-axis                               |
+| plt.grid()                                             | display a grid in the plot                     |
+| plt.axhline(y, xmin, xmax)                             | add horizontal line                            |
+| plt.axvline(x, ymin, ymax)                             | add vertical line                              |
+| plt.show()                                             | display all plots                              |
+| plt.annotate('text',(1.333, 0))                        | annotate the point x,y in the plot             |
+| plt.xticks(range(0,11, 1))/plt.yticks(range(0, 22, 1)) | add labels on the x/y axis.                    |
+| plt.quiver(x, y, xg, yg, width = l, units = 'dots')    | A quiver plot                                  |
+| plt.fill_between(section,f(section), color='orange')   | fill the selected area with the selected color |
+| df_counts.father.hist(title='Father Heights', bins=30) | histogram with 30 bins                         |
+| df['col'].corr(df['col2'])                             | correlation between col and col2               |
+| tight_layout                                           | Clean the layout                               |
 
 ```python
 # Subplots
