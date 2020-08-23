@@ -16,6 +16,7 @@
 | df_counts.father.hist(title='Father Heights', bins=30) | histogram with 30 bins                         |
 | df['col'].corr(df['col2'])                             | correlation between col and col2               |
 | tight_layout                                           | Clean the layout                               |
+| plt.figure(figsize=(15,5))                             | Set the figure size                            |
 
 ```python
 # Subplots

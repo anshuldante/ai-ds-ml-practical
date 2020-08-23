@@ -37,6 +37,7 @@
 | train['Age'].nsmallest(10)                                                           | 10 smallest values of age.                                                  |
 | train.isnull().sum()                                                                 | number of null values in every column                                       |
 | d = train.groupby('familySize')['Survived'].value_counts(normalize = True).unstack() | Reindex and flatten the dataframe                                           |
+| pd.qcut(heart.age, 10)                                                               | Create 10 quintiles (deciles)                                               |
 
 ```python
 # Different ways to create dataframes from raw data.
