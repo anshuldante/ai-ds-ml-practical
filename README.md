@@ -27,6 +27,7 @@ A collection of various Course Glossary, notes and exercise files for Artificial
 * Bagging
 * Confusion matrix
 * Build the samples from **advanced-predictive-modeling-mastering-ensembles-and-metamodeling**
+* Bagging for feature selection.
 
 ## Notes
 
