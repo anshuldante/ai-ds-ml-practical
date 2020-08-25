@@ -71,7 +71,7 @@
 
   * Chi-square can't be run on continuous variables, so the values are broken down into deciles. Deciles = percentiles/10
   * The modeller converts the age variable into deciles (of ~50 in size) and breaks it down into 2 groups: less than 13 and greater than 13 + missing.
-  * ![Sample with forced groups](images/forced_groups_conti_age_CHAID.png)
+  * ![Sample with forced groups](images/forced_groups_con_age_CHAID.png)
   * Nodes 14-19 except for 18 have ~ 50 cases, 18 has 240 cases which essentially means that 5 deciles have been combined into 1.
   * The percentages for nodes 15-19 have similar percentages for survival and even though they are a little bit apart in some cases, but not significant enough to be a separate leaf.
   * But node 14 which essentially means children, follows the notion of **women and children first**.
@@ -180,7 +180,7 @@
 
   * The original CHAID had 5 levels, the difference between the regular and exhaustive CHAID is in the way they merge.
   * ![Female subtree fare variable](images/female_sub_fare.png)
-  * CHAID would convert the values into deciles and make pairs to combine and then the enxt pair and so on till there are no more pairs left to combine.
+  * CHAID would convert the values into deciles and make pairs to combine and then the next pair and so on till there are no more pairs left to combine.
   * Exhaustive CHAID keeps going even when CHAID would've stopped.
   * ![Exhaustive CHAID sample tree](images/exhaustive_chaid_sample.png)
   * The CHAID tree grows less because of the Bonferroni adjustment since it runs more tests, the significance becomes lower.

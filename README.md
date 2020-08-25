@@ -12,7 +12,7 @@ A collection of various Course Glossary, notes and exercise files for Artificial
 8. applied-machine-learning-foundations by Derek Jedamaski
 9. machine-learning-and-ai-foundations-value-estimations by Adam Geitgey
 10. machine-learning-and-ai-foundations-recommendations by Adam Geitgey
-11. applied-machine-learning-algorithms by  Derek Jedamaski
+11. applied-machine-learning-algorithms by Derek Jedamaski
 12. neural-networks-and-convolutional-neural-networks-essential-training by Jonathan Fernandes
 13. nlp-with-python-for-machine-learning-essential-training by Derek Jedamaski
 

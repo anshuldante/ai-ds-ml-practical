@@ -8,10 +8,10 @@
   * CART was slow, because it used to try out all possible splits.
   * CHAID was biased towards branches with a large number of child nodes.
   * QUEST uses statistical tests instead of a brute force search for all possible cut points and that makes it quicker.
-  * It also uses different tests appropriate for different variable types and ranks the p=values
+  * It also uses different tests, appropriate for different variable types and ranks the p-values.
     * Chi-squared for categorical variables.
     * F-tests for scale variables.
-  * Also uses surrogates for missing data like CART.
+  * Uses surrogates for missing data like CART.
 
 * ### Handling of nominal variables
 
@@ -30,8 +30,8 @@
   * F-test:
     * We plot the scale dependent variables on y-axis with the categorical independent variables on the x-axis.
     * It is a kind-of signal-to-noise ratio.
-    * ![Sample f-test plot with signal for fare](images/fare_f_test_plot_signal.png)
-    * The survivorS paid around 50 GBP for their tickets, whereas the dead ones paid considerably less at ~ 22 GBP.
+    * ![Sample f-test plot with signal for fare](images/fare_f_test_plot.png)
+    * The survivor paid around 50 GBP for their tickets, whereas the dead ones paid considerably less at ~ 22 GBP.
     * The gap between the two centre points represents the signal for fare.
     * ![Sample f-test plot with noise for fare](images/fare_f_test_plot_noise.png)
     * It's clearly visible in the plot that there is noise on both the survivor and non-survivor groups.
@@ -126,7 +126,7 @@
   * The idea is to build multiple models and then compare the results.
   * Bootstrap sampling
     * Sampling with replacement, so it's possible that some of the datapoints get picked multiple times while the others don't get picked at all.
-    * ![3 samples of top 20 random selections](images/botstrap_sampling_example.png)
+    * ![3 samples of top 20 random selections](images/bootstrap_sampling_example.png)
   * If we build an ensemble of 10 models for bagging, they'll work on 10 bootstrapped samples of the data.
   * We can see that the performance of the ensemble is better than the simple tree in both training and test dataset.
   * Although bagging has some pros there are some downsides to it which is why we don't always use them:
