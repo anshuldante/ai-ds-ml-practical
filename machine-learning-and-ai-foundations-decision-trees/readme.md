@@ -27,12 +27,12 @@
     * The 40th percentile, they too are more likely to survive.
     * Also, other than the initial predictions, the 2 models agree most of the time.
 
-## Understanding CHAID (**CH**i-squared **A**utomatic **I**nteraction **D**etection)
+## Understanding CHAID (Chi-squared Automatic Interaction Detection)
 
 * ### Chi squared overview
 
   * ![Sample Matrix output displaying Chi-squared value](images/sample_chi_squared.png)
-  * When we create a matrix for Survival vs Sex in SPSS Modeler, we can see that the overall survival rate is ~ 38.5 % whereas the sex-wise survival rate is: female: 74%, male: 19%.
+  * When we create a matrix for Survival vs Sex in SPSS Modeler, we can see that the overall survival rate is ~ 38.5 % whereas the sex-wise survival rate is: female: 74% and male: 19%.
   * In this case, the value of chi-squared probability is zero, since the difference between the percentages of males and females is quite different, if they were closer, it'll be 1 or close to 1.
   * What a zero value means is that the survival (output variable) is heavily dependent on the sex of the person (input variable).
   * In general, this is what CHAID does, runs the chi-squared analysis for all variables and puts them in the order of increasing probability as input variables.
@@ -49,16 +49,16 @@
   * The advice for the Bonferroni adjustment is:
     * Generally leave it on
     * If the tree doesn't grow, experiment by turning it off.
-    * Be careful whenever turning it off, consider making significant lower than 0.5.
-  * The issue with turning it off is that you might have too complex of a tree (over-fit) which doesn't work well on new data. So **always validate** on new data before using any tree.
+    * Be careful whenever turning it off, consider making significance lower than 0.5.
+  * The issue with turning it off is that you might have too complex of a tree (over-fit) which doesn't work well on new data. So **always validate** on new data.
 
-* ### CHAID's handling of nominal variables
+* ### CHAID: handling of nominal variables
 
   * The modeller found 4 values for the variable **Embarked** and separated it into two groups: Q and S are combined but C is with the ones with missing data (indicated with **blank**) in the model.
   * ![Sample with forced 3 groups with 4th for blank](images/forced_groups_nominal_embarked_CHAID.png)
   * The modeler can be forced to split the data into 4 different groups, but as displayed above, the percentages for Q and S are too similar to be separate and although the percentages for C and blank are quite different, the sample size for blank is just 1.
 
-* ### CHAID's handling of ordinal variables
+* ### CHAID: handling of ordinal variables
 
   * The modeler made 2 groups out of Pclass, **less than 2** and **greater than 2**.
   * ![Sample with forced 3 groups](images/forced_groups_ordinal_pclass_CHAID.png)
@@ -67,7 +67,7 @@
     * In case of Nominal variables, anything can be combined with anything.
     * But in case of ordinal variables, only the close variables can be combined. i.e. 1 and 2 or 2 and 3 can be combined but not 1 and 3.
 
-* ### CHAID's handling of continuous variables
+* ### CHAID: handling of continuous variables
 
   * Chi-square can't be run on continuous variables, so the values are broken down into deciles. Deciles = percentiles/10
   * The modeller converts the age variable into deciles (of ~50 in size) and breaks it down into 2 groups: less than 13 and greater than 13 + missing.
@@ -81,7 +81,7 @@
   * ![Female part of the generated CHAID tree](images/female_part_generated_CHAID_tree.png)
   * A few observations are:
     * Although the overall survival rate is 38%, 75% of the females have survived.
-    * Within that group all 57 females <=24 years of age have a 100% survival rate.
+    * Within that group all 57 females of <= 24 years of age have a 100% survival rate.
     * Node 9 here could easily be the result of an over-fitting tree, and that it could just be happening because of the small sample size, since node 8 & 10 both have almost 100% survival rate.
   * ![Male part of the generated CHAID tree](images/male_part_generated_CHAID_tree.png)
   * A few observations are:
@@ -139,16 +139,16 @@
 
 * ### Understanding (cost-complexity) pruning
 
-  * If we just uncheck the **Prune tree to avoid over-fitting**, the tree becomes much bigger and has 23 nodes.
+  * If we just un-check the **Prune tree to avoid over-fitting**, the tree becomes much bigger and has 23 nodes.
   * C&RT starts from the bottom and starts pruning the branches that are complex but don't contribute very much to the accuracy of the tree.
   * We measure the complexity by the number of leaf nodes.
   * So if a branch has a lot of leaf nodes but isn't aiding in the accuracy of the tree, it's pruned.
-  * The authors of C&RT a lot of combinations, but they found that the results were best when the grew the tree to max and then pruned it in the above mentioned way.
+  * The authors of C&RT tried out a lot of combinations, but they found that the results were best when they grew the tree to max and then pruned it in the above mentioned way.
   * We can turn it off to see more info about where the tree might go, if another layer is added.
 
 * ### A look at the whole C&RT tree
 
-  * It's a much smaller tree as compared to CHAID.
+  * It's much smaller than CHAID.
   * C&RT was initially somewhat less accurate than CHAID but it was stable and worked almost similar with test and train data which was not the case with CHAID and that made us rethink our CHAID algorithm.
   * Node 5 is the only leaf node with a small sample size of 12.
   * We could look to build additional branches beneath node 6 which has a sample size of 328.
@@ -161,20 +161,20 @@
 * ### Stopping rules in CHAID and C&RT
 
   * **Parent-child sample size**
-    * Basically just means the minimum number of samples in a parent node to be broken down and the same in the child to be created.
-    * More important to not have a conservative value in case of C&RT since this may negatively pruning which is something C*RT relies on heavily.
-    * Changed the values to absolute 50/100 and 25/50 in CHAID, didn't seem to make a difference in either of the case.
+    * The minimum number of samples in a parent node to be broken down and in the child to be created.
+    * More important to not have a conservative value in case of C&RT since this may negatively affect pruning, which is something C&RT relies on heavily.
+    * Changing the values to absolute 50/100 and 25/50 in CHAID, didn't seem to make a difference in either of the case.
   * **Tree Depth**
     * The maximum number of levels the tree is allowed to have.
-    * Trying out a higher number of levels (6/7) in a CHAID tree can lead to better results, so it should be tried out. In case of C&RT, going up to even 8 might make some sense, since it's known to build larger and skinnier trees than CHAID in general and it helps to have a bigger tree available for prunning.
+    * Trying out a higher number of levels (6/7) in a CHAID tree can lead to better results, so it should be tried out. In case of C&RT, going up to even 8 might make some sense, since it's known to build larger and skinnier trees than CHAID in general and it helps to have a bigger tree available for pruning.
   * **Confidence level (CHAID)**
     * If you reduce the significance level for splitting to 0.01, that means you want a 99% confidence for splitting, which would lead to a tree, that'll have grown less.
     * However, if the tree is not growing as expected, you can consider setting the value to 0.1 and expecting a confidence level of 90%.
     * In case of CHAID, this is the most important stopping rule to manage the growth of the tree.
   * **Minimum change in impurity (C&RT)**
-    * Adding a zero in the default value allows the tree to grow more and removing limits its growth.
-    * This is again the most important setting in case of C&RT.
-  * So, rather than removing Banferonni adjustment or Pruning, these are the more important settings or techniques, which will let you control tree growth and to improve your model.
+    * Adding a zero in the default value allows the tree to grow more and removing it, limits its growth.
+    * This is the most important setting in case of C&RT.
+  * Rather than removing Bonferroni adjustment or Pruning, these are the more important settings or techniques, which will allow a control over tree growth and to improve the model.
 
 * ### Exhaustive CHAID
 
@@ -183,7 +183,7 @@
   * CHAID would convert the values into deciles and make pairs to combine and then the enxt pair and so on till there are no more pairs left to combine.
   * Exhaustive CHAID keeps going even when CHAID would've stopped.
   * ![Exhaustive CHAID sample tree](images/exhaustive_chaid_sample.png)
-  * The ECHAID tree grows less because of the Bonferonni adjustment since it runs more tests, the significance becomes lower.
+  * The CHAID tree grows less because of the Bonferroni adjustment since it runs more tests, the significance becomes lower.
 
 ## Conclusion
 
