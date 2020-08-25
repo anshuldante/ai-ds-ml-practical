@@ -2,7 +2,7 @@
 
 ## Machine Learning Basics
 
-* ### The kind of problems can ML help solve
+* ### The kind of problems ML can help solve
 
   * Does the problem require a prediction or bucketing something into categories?
   * Is the problem relatively sef-contained i.e. the problem should not depend too heavily on too many external factors.
@@ -20,8 +20,7 @@
 
   * Some popular python packages:
     * Machine Learning:
-      * scikit
-      * learn
+      * scikit-learn
       * LightGBM
       * SciPy
     * Deep learning:
@@ -84,9 +83,9 @@
     * Correlations
     * Duplicates
   * Why data cleaning?
-    * Shape data to that the model can pick up on the signal
+    * Shape data so that the model can pick up on the signal
     * Remove irrelevant data
-    * Adjust features to acceptable for a model.
+    * Adjust features to make them acceptable for a model.
   * What is data cleaning?
     * Anonymise
     * Encoding categorical variables
@@ -96,7 +95,7 @@
 * ### Exploring continuous features
 
   * On taking the mean, we can see that the average fare for the people who survived is more than double of the people that didn't. Moreover, the mean of Pclass also points to the fact that more people from higher class survived.
-  * describe method also tells us that the only continuous feature with missing values is **Age**. Now to manage that, we need to look at the datapoints with the missing values to deduce if for example it's been missed randomly or just that the age for a certain class or category was not asked for.
+  * Describe method also tells us that the only continuous feature with missing values is **Age**. Now to manage that, we need to look at the datapoints with the missing values to deduce if for example it's been missed randomly or just that the age for a certain class or category was not asked for.
   * To analyse the datapoints with missing age, we group by null age values and we see that, the survival rate for people with missing date is lower, they have fewer parents and children onboard and their average fare is also lower as compared to the rest of the group. But none of this leads to a relevant conclusion about a specific group having missing values.
 
 * ### Plotting continuous features
@@ -224,7 +223,7 @@ a: Mike, b: Monica
 
 * On using GridSearchCV, we found that the improvement over the default values of (max_depth = 10 and n_estimators=100) is not very significant.
 * Our top 3 models turn out to be: (max_depth, n_estimators) = (10, 100), (20, 50) and (10, 50)
-* I ran 6 combinations of hyper-params and the retuls were:
+* I ran 6 combinations of hyper-params and the results were:
 
 ```python
 MAX DEPTH: 100 / # OF EST: 10 -- A: 0.821 / P: 0.833 / R: 0.724

@@ -17,7 +17,7 @@
 | df.sort_index()                                                                      | sort the index in default ascending order                                   |
 | df.index.nlevels                                                                     | number of levels in the index                                               |
 | df.index.get_level_values(1)                                                         | all values in the passed level number                                       |
-| df.groupby('col')['col2].mean()                                                      | Group by and aggregate                                                      |
+| df.groupby('col')['col2].mean(), titanic.groupby(titanic['Age'].isnull())            | Group by and aggregate                                                      |
 | gapminder.pivot_table('babies', 'year', 'region')                                    | segment babies data by both year and region, then take mean                 |
 | pd.read_csv(x, na_values=['?'])                                                      | defines that '?' is the nan symbol in the dataset                           |
 | df.astype({"normalized-losses": "int64")                                             | to assign types to columns                                                  |
