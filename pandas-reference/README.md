@@ -1,43 +1,45 @@
 # Pandas Reference
 
-| Method                                                                               | Description                                                                 |
-| ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------- |
-| pd.read_csv                                                                          | Read a CSV file                                                             |
-| df.info()                                                                            | Column names, Non-null count and data-types                                 |
-| df.columns                                                                           | Column names                                                                |
-| df.dtypes                                                                            | Columns datatypes                                                           |
-| df['col'] *OR* df.col                                                                | column name, length, datatype and some data                                 |
-| df['col'].unique()                                                                   | unique values in the column                                                 |
-| df['col'].value_counts(normalize=True)                                               | counts by unique values, normalize=True returns ratios False returns counts |
-| df[df['col'] == 'val'] *OR* df.query('col' == 'val')                                 | rows filtered by column = value                                             |
-| df[df.col.str.contains('val')]                                                       | rows with col having the str 'val'                                          |
-| df = pd.DataFrame(np.load('x.npy'))                                                  | data frame from npy file or from a numpy array                              |
-| df.set_index('col)                                                                   | use selected columns as index instead of the default row numbers            |
-| df.loc['val], df.loc[[1,2,3]], df.loc[1:50, 'col']                                   | rows based on a single, list or slice or labels for rows and/or columns     |
-| df.sort_index()                                                                      | sort the index in default ascending order                                   |
-| df.index.nlevels                                                                     | number of levels in the index                                               |
-| df.index.get_level_values(1)                                                         | all values in the passed level number                                       |
-| df.groupby('col')['col2].mean(), titanic.groupby(titanic['Age'].isnull())            | Group by and aggregate                                                      |
-| gapminder.pivot_table('babies', 'year', 'region')                                    | segment babies data by both year and region, then take mean                 |
-| pd.read_csv(x, na_values=['?'])                                                      | defines that '?' is the nan symbol in the dataset                           |
-| df.astype({"normalized-losses": "int64")                                             | to assign types to columns                                                  |
-| df.columns = ['symboling']                                                           | to assign names to columns                                                  |
-| df.horsepower=df.horsepower.fillna(df.horsepower.mean())                             | fill nan values                                                             |
-| df['cylinders'] = df['num-of-cylinders'].map(num_map)                                | map values in a column using dictionary                                     |
-| df = df.dropna(subset=['price'])                                                     | drop nans for the specified columns                                         |
-| df = df.reset_index(drop=True)                                                       | reset index                                                                 |
-| df.horsepower=df.horsepower.fillna(df.horsepower.mean())                             | fill nans with the mean                                                     |
-| pd.get_dummies(iris["species"])                                                      | get dummy variables with values for the specified column                    |
-| df.corr()                                                                            | Correlation matrix for all columns                                          |
-| df.drop(['B', 'C'], axis=1)                                                          | drop a column                                                               |
-| df.drop([0, 1])                                                                      | drop by index                                                               |
-| pd.concat([cars, dummies], axis=1)                                                   | concatenate 2 or more dataframes                                            |
-| pd.sort_values('col',ascending=False)                                                | sort dataframe by column                                                    |
-| train['Fare'].nlargest(10)                                                           | 10 largest values of fare                                                   |
-| train['Age'].nsmallest(10)                                                           | 10 smallest values of age.                                                  |
-| train.isnull().sum()                                                                 | number of null values in every column                                       |
-| d = train.groupby('familySize')['Survived'].value_counts(normalize = True).unstack() | Reindex and flatten the dataframe                                           |
-| pd.qcut(heart.age, 10)                                                               | Create 10 quintiles (deciles)                                               |
+| Method                                                                                  | Description                                                                 |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| pd.read_csv                                                                             | Read a CSV file                                                             |
+| df.info()                                                                               | Column names, Non-null count and data-types                                 |
+| df.columns                                                                              | Column names                                                                |
+| df.dtypes                                                                               | Columns datatypes                                                           |
+| df['col'] *OR* df.col                                                                   | column name, length, datatype and some data                                 |
+| df['col'].unique()                                                                      | unique values in the column                                                 |
+| df['col'].value_counts(normalize=True)                                                  | counts by unique values, normalize=True returns ratios False returns counts |
+| df[df['col'] == 'val'] *OR* df.query('col' == 'val')                                    | rows filtered by column = value                                             |
+| df[df.col.str.contains('val')]                                                          | rows with col having the str 'val'                                          |
+| df = pd.DataFrame(np.load('x.npy'))                                                     | data frame from npy file or from a numpy array                              |
+| df.set_index('col)                                                                      | use selected columns as index instead of the default row numbers            |
+| df.loc['val], df.loc[[1,2,3]], df.loc[1:50, 'col']                                      | rows based on a single, list or slice or labels for rows and/or columns     |
+| df.sort_index()                                                                         | sort the index in default ascending order                                   |
+| df.index.nlevels                                                                        | number of levels in the index                                               |
+| df.index.get_level_values(1)                                                            | all values in the passed level number                                       |
+| df.groupby('col')['col2].mean(), titanic.groupby(titanic['Age'].isnull())               | Group by and aggregate                                                      |
+| gapminder.pivot_table('babies', 'year', 'region')                                       | segment babies data by both year and region, then take mean                 |
+| titanic.pivot_table('Survived', index='Cabin_ind', columns='Embarked', aggfunc='count') | Survival count against cabin indicator and embarked                         |
+| pd.read_csv(x, na_values=['?'])                                                         | defines that '?' is the nan symbol in the dataset                           |
+| df.astype({"normalized-losses": "int64")                                                | to assign types to columns                                                  |
+| df.columns = ['symboling']                                                              | to assign names to columns                                                  |
+| df.horsepower=df.horsepower.fillna(df.horsepower.mean())                                | fill nan values                                                             |
+| df['cylinders'] = df['num-of-cylinders'].map(num_map)                                   | map values in a column using dictionary                                     |
+| df = df.dropna(subset=['price'])                                                        | drop nans for the specified columns                                         |
+| df = df.reset_index(drop=True)                                                          | reset index                                                                 |
+| df.horsepower=df.horsepower.fillna(df.horsepower.mean())                                | fill nans with the mean                                                     |
+| pd.get_dummies(iris["species"])                                                         | get dummy variables with values for the specified column                    |
+| df.corr()                                                                               | Correlation matrix for all columns                                          |
+| df.drop(['B', 'C'], axis=1)                                                             | drop a column                                                               |
+| df.drop([0, 1])                                                                         | drop by index                                                               |
+| pd.concat([cars, dummies], axis=1)                                                      | concatenate 2 or more dataframes                                            |
+| pd.sort_values('col',ascending=False)                                                   | sort dataframe by column                                                    |
+| train['Fare'].nlargest(10)                                                              | 10 largest values of fare                                                   |
+| train['Age'].nsmallest(10)                                                              | 10 smallest values of age.                                                  |
+| train.isnull().sum()                                                                    | number of null values in every column                                       |
+| d = train.groupby('familySize')['Survived'].value_counts(normalize = True).unstack()    | Reindex and flatten the dataframe                                           |
+| pd.qcut(heart.age, 10)                                                                  | Create 10 quintiles (deciles)                                               |
+| y_train.to_csv('file.csv', index=False)                                                 | save as a csv                                                               |
 
 ```python
 # Different ways to create dataframes from raw data.

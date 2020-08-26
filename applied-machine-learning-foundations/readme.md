@@ -198,8 +198,8 @@
 
   * Techniques used to reduce overfitting by discouraging overly complex models in some way.
   * The goal is to allow enough flexibility for the algorithm to learn the underlying patterns in the data but provide guardrails so it doesn't overfit.
-  * ***Occam's razor**: whenever possible, choose the simplest answer to a problem. In our case, it means that we should select the simplest model which is accurate enough.
-  * **Ridge and lasso regression**: adding a penalty to the loss function to constrain coefficients i.e. the model's accuracy will have to significantly for it to become more complex.
+  * **Occam's razor**: whenever possible, choose the simplest answer to a problem. In our case, it means that we should select the simplest model which is accurate enough.
+  * **Ridge and lasso regression**: adding a penalty to the loss function to constrain coefficients i.e. the model's accuracy will have to increase significantly for it to become more complex.
   * **Dropout:** some nodes are ignored during training, which forces some other nodes to take on more or less responsibility for the input/output.
 
 ## End-to-end pipeline
