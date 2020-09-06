@@ -7,7 +7,7 @@
   * Rank products by user preferences
   * Product similarity
   * User similarity
-  * Shopping (products, books eyc.), Social Media, music recommendations, movie/tv content recommendations.
+  * Shopping (products, books etc.), Social Media, music recommendations, movie/tv content recommendations.
   * Dating apps, Banking products, insurance products.
 
 ## Ways of Making Recommendations

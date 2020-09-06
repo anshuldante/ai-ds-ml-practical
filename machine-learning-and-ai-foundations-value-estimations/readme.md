@@ -44,7 +44,7 @@ estimate = 50000 + (size_in_sqft * weight1) + (number_of_bedrooms * weight2)
 * Data should cover as many combinations of features as possible.
 * You should aim for at least 10x more data points than the number of features.
 * More data is almost always better (but not always necessary).
-* You should have data related similar to the dataset you're trying to predict.
+* You should have data related and similar to the dataset you're trying to predict.
 
 ## Features
 

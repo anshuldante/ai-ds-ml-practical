@@ -11,9 +11,9 @@ data_table_pivot = pandas.pivot_table(data_table, index='city', aggfunc='mean', 
 
 print(data_table_pivot.head(1))
 
-# html = data_table[0:100].to_html()
-# with open("data.html", "w") as f:
-#     f.write(html)
-#
-# full_filename = os.path.abspath("data.html")
-# webbrowser.open("file://{}".format(full_filename))
+html = data_table[0:100].to_html()
+with open("data.html", "w") as f:
+    f.write(html)
+
+full_filename = os.path.abspath("data.html")
+webbrowser.open("file://{}".format(full_filename))

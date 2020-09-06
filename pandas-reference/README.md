@@ -28,7 +28,7 @@
 | df = df.dropna(subset=['price'])                                                        | drop nans for the specified columns                                         |
 | df = df.reset_index(drop=True)                                                          | reset index                                                                 |
 | df.horsepower=df.horsepower.fillna(df.horsepower.mean())                                | fill nans with the mean                                                     |
-| pd.get_dummies(iris["species"])                                                         | get dummy variables with values for the specified column                    |
+| pd.get_dummies(iris, columns=["species"])                                               | get dummy variables with values for the specified column                    |
 | df.corr()                                                                               | Correlation matrix for all columns                                          |
 | df.drop(['B', 'C'], axis=1)                                                             | drop a column                                                               |
 | df.drop([0, 1])                                                                         | drop by index                                                               |
@@ -123,4 +123,20 @@ train['Fare']  = train.groupby("Pclass")['Fare'].transform(lambda x: x.fillna(x.
 train['Cabin'] = train['Cabin'].map(lambda x:re.compile("([a-zA-Z])").search(x).group())
 cabin_category = {'A':1, 'B':2, 'C':3, 'D':4, 'E':5, 'F':6, 'G':7, 'T':8, 'U':9}
 train['Cabin'] = train['Cabin'].map(cabin_category)
+```
+
+```python
+# Save the data as an HTML and open it in a web-browser
+html = house[0:100].to_html()
+with open("data.html", "w") as f:
+    f.write(html)
+
+full_filename = os.path.abspath("data.html")
+webbrowser.open("file://{}".format(full_filename))
+html = house[0:100].to_html()
+with open("data.html", "w") as f:
+    f.write(html)
+
+full_filename = os.path.abspath("data.html")
+webbrowser.open("file://{}".format(full_filename))
 ```
