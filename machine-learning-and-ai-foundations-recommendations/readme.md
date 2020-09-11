@@ -36,7 +36,7 @@
   * Art-house appeal rating
   * Crowd-pleaser appeal rating
 * We'll multiply user's interests rating by the corresponding movie appeal ratings to calculate a score and then recommend the movie with the highest score.
-* Finally, the score calculation turns out to be a matrix multiplication for each user's interest * appeals for all movies.
+* Finally, the score calculation turns out to be a matrix multiplication for each user's interest appeals for all movies.
 * In conclusion, we can predict how much a user will like a movie, if we have appeal/interest ratings for every user and movie.
 
 ## Collaborative Filtering with Matrix Factorization
@@ -45,8 +45,8 @@
   * Create a matrix of known user reviews.
   * Factor out a U (user attribute) matrix and an M (movie attribute) matrix from the known reviews.
   * Multiply the U and M matrices we found to get review scores for every user and every movie.
-  * Since we won't know what the values in teh matrices represent (drama/comedy etc.) the vectors are called Latent (hidden) vectors.
-* After generating the movie rating matrix, we recommend the users movies with the highest ratings which they haven't watched yet.
+  * Since we won't know what the values in the matrices represent (drama/comedy etc.), the vectors are called Latent (hidden) vectors.
+* After generating the movie rating matrix, we recommend to the users, the movies with the highest ratings, that they haven't watched yet.
 * If the a user rates a movie we recommend, we put the actual movie rating in and recalculate the matrix.
 * For finding the matrices, we have the **Matrix Factorization Problem**
   * It assumes that there's a large matrix of numbers.
@@ -57,7 +57,7 @@
 * Here's what the algorithms looks like:
   * Set all elements in U and M to random numbers, the movie rating matrix will now result in random numbers
   * Create a **cost function** that checks how far off **U x M** currently is from equaling the known values of the Movie Ratings matrix.
-  * Using a numerical optimization algorithm, tweak the numbers i U and M a little a a time.
+  * Using a numerical optimization algorithm, tweak the numbers in U and M a little at a time.
   * The goal is to get the **cost function** a little closer to zero with every iteration.
   * We'll use **SciPy's fmin_cg()** optimization function to find the minimum cost. It searches for inputs that make the function return the minimum output.
   * The **U** and **M** values we find will be the estimates: **U x M ~ Movie Ratings**.
@@ -65,11 +65,11 @@
 * **Usage of Latent Vectors**
   * Especially useful for brand-new users who haven't reviewed anything yet.
   * Show more products **similar** to the current product.
-* To suggest movies similar to the user has watched:
-  * We use the matrices to find the movie which is the closest rating set to selected one.
-  * We first find the features for the selected movie.
-  * Then we find the difference, get the absolute values for the differences and find the sums.
-  * On sorting the results, we get the movies that are most similar to the selected one in decreasing order.
+  * To suggest movies similar to the user has watched:
+    * We use the matrices to find a movie which has a rating closest to the selected one.
+    * We first find the features for the selected movie.
+    * Then we find the difference, get the absolute values for the differences and find the sums.
+    * On sorting the results, we get the movies that are the most similar to the selected one in decreasing order.
 
 ## Testing Our System
 
