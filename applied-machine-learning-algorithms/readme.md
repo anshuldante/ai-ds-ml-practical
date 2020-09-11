@@ -17,20 +17,18 @@
   * Linear regression cant work too well if the target variable can be only within 0 and 1.
   * ![Linear vs logistic regression for binary classification](images/linear_vs_logistic.png)
 
-| When to use                                                           | When not to use                                                                  |
-| --------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| Binary target variable                                                | Continuous target variables                                                      |
-| Transparency is important or interested in significance of predictors | Massive data (rows or columns) and not for short and fat or skinny and tall data |
-| Fairly well behaved data                                              | Unwieldy data (missing, too many outliers or complex relationships)              |
-| Need a quick initial benchmark                                        | Performance is the only thing that matters                                       |
+| When to use                                                           | When not to use                                                               |
+| --------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Transparency is important or interested in significance of predictors | Massive data (rows or columns); Not for short and fat or skinny and tall data |
+| Fairly well behaved data                                              | Unwieldy data (missing, too many outliers or complex relationships)           |
+| Need a quick initial benchmark                                        | Performance is the only thing that matters                                    |
 
 * ## Hyper parameters to consider
 
   * We don't always use all of the hyper parameters available in an algorithm, we use the ones which will have the largest impact.
   * Here we'll only focus on the value of C. C is a regularization parameter that controls how closely the model fits the training data.
   * Regularization is a technique used to reduce overfitting by discouraging overly complex models in some way.
-  * C is proportional to reverse of regularization, which means higher the C value, lower the regularization, higher the complexity which can lead to an overfit model.
-  * And lower the C value, higher the regularization which can lead to an underfit model.
+  * C is proportional to reverse of regularization, which means higher the C value, lower the regularization higher the complexity, which can lead to an overfit model and lower the C value, higher the regularization, which can lead to an underfit model.
   * ![Effect of various C values on the flower petal dataset](images/c_value_model.png)
 
 ## Support Vector Machine
@@ -50,10 +48,9 @@
 
 | When to use                                            | When not to use                                                       |
 | ------------------------------------------------------ | --------------------------------------------------------------------- |
-| Binary target variable                                 | Feature-to-row ratio is very low                                      |
-| Feature-to-row ratio is very high (short and fat data) | Transparency is important or interested in significance of predictors |
-| Very complex relationships                             | Looking for a quick benchmark model                                   |
-| Lots of outliers                                       |
+| Feature-to-row ratio is very high (short and fat data) | Feature-to-row ratio is very low                                      |
+| Very complex relationships                             | Transparency is important or interested in significance of predictors |
+| Lots of outliers                                       | Looking for a quick benchmark model                                   |
 
 * ### Hyper parameters to consider in SVM
 
@@ -110,7 +107,7 @@
 | When to use                                                | When not to use                                                                                                                                                           |
 | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Categorical or continuous target variables                 | If you're solving a very complex, novel problem. Maybe be good for a usecase to build something 90% of the way but if you want an optimal model, RF is not the way to go. |
-| Interested in significance of predictors                   | Transparent is important                                                                                                                                                  |
+| Interested in significance of predictors                   | Transparency is important                                                                                                                                                 |
 | Need a quick benchmark model                               | Prediction time is important                                                                                                                                              |
 | If you have messy data such as missing values and outliers |
 
@@ -134,17 +131,17 @@
   * Boosting effectively learns from its mistakes with each iteration.
   * Boosting has multiple sub-types, we'll be looking at gradient boosting here.
   * We'll take a data sample and build a simple tree (weaker model).
-  * Post evaluation, the misclassified examples are given extra weight and builds a new weak model.
-  * And the process is repeated multiple times and a final strong model is the resultant of the process.
+  * Post evaluation, the misclassified examples are given extra weight and a new weak model is built.
+  * The process is repeated multiple times and a final strong model is the resultant of the process.
   * ![Sample Gradient Boosting](images/sample_gradient_boosting.png)
   * In contrast to Random Forest, the models are run one-by-one, so the training process is much slower. However, the predictions are much faster, since we already have the model in place.
   * ![GB Sample Prediction on test data ](images/gb_sample_prediction_test_data.png)
 
-| When to use                                 | When not to use                                                                               |
-| ------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| Categorical and continuous target variables | Transparency is important                                                                     |
-| Useful on nearly any type of problem        | Training is important or compute power is limited                                             |
-| Interested in significance of predictors    | Data is really noisy, then is should be avoided, since it will try to fit to the missing data |
+| When to use                                 | When not to use                                                    |
+| ------------------------------------------- | ------------------------------------------------------------------ |
+| Categorical and continuous target variables | Transparency is important                                          |
+| Useful on nearly any type of problem        | Training speed is important or compute power is limited            |
+| Interested in significance of predictors    | Data is really noisy, since it will try to fit to the missing data |
 | Prediction time is important                |
 
 * ### Hyper Parameters to consider
@@ -154,7 +151,7 @@
     * max_depth
     * learning_rate
       * Here the learning rate controls the value of the learning rate instead of the constant values in MLP.
-    * The trees for GB should be lower than that of Random Forests.
+    * The number of trees in Boosting should be lower than that in Random Forests.
 
 ## Summary
 
@@ -188,5 +185,3 @@
   * Evaluate all of our saved models on the validation set
   * Select the best model based on performance on the validation set
   * Evaluate that model on the holdout test set
-
-* fast.ai

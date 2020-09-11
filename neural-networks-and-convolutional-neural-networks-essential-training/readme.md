@@ -8,15 +8,15 @@
     * ![How brain works](images/how_brain_works.png)
     * ![How neurons work](images/how_neurons_work.png)
     * Basic units of the brain, transmit information to other nerve cells.
-    * They are excitable, produce electrical events (nerve impulses) which are the basic currency of brains.
+    * They are excitable, produce electrical events (nerve impulses), which is the basic currency of brains.
     * Start a chain reaction
     * Dendrites pick up the impulse and send the message to the next neuron and the process goes on.
     * Once the message hits its target, a neurotransmitter is stimulated and causes action.
     * All of this happens within 7 ms.
   * **Artificial neurons**
     * The first neural that was built was a perceptron and the motivation came from **flies**
-    * Flies use their the visual filters in their eyes to decide whether or not they should flee
-    * The perceptron takes inputs, applies some functions and takes the weighted some of the functions with bias to decide whether or not the action should be taken.
+    * Flies use the the visual filters in their eyes to decide whether or not they should flee
+    * The perceptron takes inputs, applies some functions and takes the weighted sum of the functions with bias to decide whether or not the action should be taken.
     * ![Perceptron](images/perceptrons.png)
 
 * ### Gradient descent
@@ -26,7 +26,7 @@
     * To improve a model's prediction, we want to minimize the loss.
   * We need to find a way to learn the neuron's parameters (weight and bias) from the data.
   * **Gradient Descent** is an optimizing algorithm which iterates through different combinations of weights and biases to find the combination which minimizes the error/loss.
-  * Some loss functions are: sum of squared errors, cross-entropy loss is better suited for logistic functions
+  * Some loss functions are: sum of squared errors, cross-entropy loss (better suited for logistic functions)
 
 ## Components of Neural Networks
 
